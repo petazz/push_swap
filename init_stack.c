@@ -6,7 +6,7 @@ void	ft_error()
 	exit(EXIT_FAILURE);
 }
 
-int		ft_valid(char *str)
+int		 ft_valid(char *str)
 {
 	unsigned long num;
 	int sign;
@@ -37,16 +37,16 @@ int		ft_valid(char *str)
 	return (1);
 }
 
-int	ft_repeat(int *arr)
+int	ft_repeat(int *arr, int len)
 {
     int i;
     int j;
 
 	i = 0;
-	while(arr[i])
+	while(i < len - 1)
 	{
 		j = i + 1;
-		while(arr[j])
+		while(j < len)
 		{
 			if (arr[i] == arr[j])
 				return (0);
@@ -55,18 +55,6 @@ int	ft_repeat(int *arr)
 		i++;
 	}
 	return (1);
-}
-
-int	ft_strlen_int(int *c)
-{
-	int	i;
-
-	i = 0;
-	while (c[i])
-	{
-		i++;
-	}
-	return (i);
 }
 
 void	init_stack(char **argv, t_data *data, int argc)
@@ -80,7 +68,6 @@ void	init_stack(char **argv, t_data *data, int argc)
 		write(2, "ERROR", 5); // funcion limpieza nodos
 	str = ft_strjoin_ps(argv, argc);
 	argv = ft_split(str, ' ');
-	data->len = ft_strlen_int(data->arr);
 	while(argv[i])
 	{
 		if(!ft_valid(argv[i]))
@@ -88,20 +75,21 @@ void	init_stack(char **argv, t_data *data, int argc)
 		data->arr[i] = ft_atoi(argv[i]);
 		i++;
 	}
-	if (!ft_repeat(data->arr))
+	data->len = i;
+	if (!ft_repeat(data->arr, data->len))
 		ft_error();
-	
-	data->len = ft_strlen_int(data->arr);
-	t_node *primerNodo = listGenerator(data->arr, data->len);
+	data->stack_A = listGenerator(data->arr, data->len);
+	//////////////////IMPRIMIR//////////////////////
+	/* for(int i = 0; i < data->len; i++)
+	{
+		printf("nodo :	%d\n", data->stack_A->n);
+		data->stack_A = data->stack_A->next;
+	} */
+	/* int arr2[] = {4, 5, 6};
+	t_node *segundoNodo = listGenerator(arr2, 3);
 	for(int i = 0; i < data->len; i++)
 	{
-		printf("nodo :	%d\n", primerNodo->n);
-		primerNodo = primerNodo->next;
-	}
-	sa(primerNodo);
-	for(int i = 0; i < data->len; i++)
-	{
-		printf("movimiento nodo :	%d\n", primerNodo->n);
-		primerNodo = primerNodo->next;
-	}
+		printf("nodo 2:	%d\n", segundoNodo->n);
+		segundoNodo = segundoNodo->next;
+	} */  
 }

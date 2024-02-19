@@ -1,6 +1,23 @@
 #include "prueba.h"
 
-t_node *newNode(int n)
+t_node *listGenerator(int *arr, int len)
+{
+	t_node *head;
+	int		i;
+
+	if (len < 1)
+		return NULL;
+	head = NULL;
+	i = len - 1;
+	while(i >= 0)
+	{
+		ft_push(&head, arr[i]);
+		i--;
+	}
+	return (head);
+} 
+
+static t_node *newNode(int n)
 {
 	t_node *node = malloc(sizeof(t_node));
 	if(!node)
@@ -11,27 +28,46 @@ t_node *newNode(int n)
 	return node;
 }
 
-t_node *listGenerator(int *arr, int len)
+void	ft_push(t_node **head, int n)
 {
-	t_node *node;
-	t_node *aux;
-	t_node *head;
-	int		i;
+	t_node *top;
 
-	i = 1;
-	if (len >= 1)
-		node = newNode(arr[0]);
-	head = node;
-	aux = head;
-	while(i < len)
+	top = newNode(n);
+	if(!(*head))
 	{
-		node = newNode(arr[i]);
-		aux->next = node;
-		node->prev = aux;
-		aux = node;
-		i++;
+		top->next = top;
+		top->prev = top;
 	}
-	head->prev = node;
-	node->next = head;
-	return (head);
-} 
+	else
+	{
+		top->next = (*head);
+		top->prev = (*head)->prev;
+		(*head)->prev->next = top;
+		(*head)->prev = top;
+	}
+	(*head) = top; 
+}
+
+int	ft_pop(t_node **head)
+{
+	int n;
+	t_node *aux;
+
+	if(!head)
+		exit(EXIT_FAILURE);
+	n = (*head)->prev->n;
+	aux = *head; 
+	if((*head)->prev == (*head))
+	{
+		free(*head);
+		(*head) = NULL;
+	}
+	else
+	{
+		(*head)->prev->next = (*head)->next;
+		(*head)->next->prev = (*head)->prev;
+		(*head) = (*head)->next;
+		free(aux);
+	}
+	return (n);
+}
