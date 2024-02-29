@@ -55,7 +55,7 @@ int	ft_pop(t_node **head)
 
 	if(!head)
 		exit(EXIT_FAILURE);
-	n = (*head)->prev->n;
+	n = (*head)->n;
 	aux = *head; 
 	if((*head)->prev == (*head))
 	{

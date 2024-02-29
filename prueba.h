@@ -41,8 +41,10 @@ void	rrx(t_node **head);
 void	rx(t_node **head);
 int		ft_isSort(t_node *head, t_data *data);
 void	ft_sort(t_data *data);
-int		ft_lst_len(t_data *data);
+int		ft_lst_len(t_node *head);
 void	ft_above_average(t_data *data, int average);
-int		ft_average(t_node *last, t_node *head, int size_A);
+int		ft_average(t_node *head, int size_A);
+void	ft_besties(t_node **head_A, t_node **head_B);
+
 
 #endif

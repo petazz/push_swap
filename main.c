@@ -13,10 +13,10 @@ int main(int argc, char **argv)
 	data.len = 0;
 	init_stack(argv + 1, &data, argc);
 	ft_sort(&data);
-	for(int i = 0; i < data.len; i++)
+	/*  for(int i = 0; i < data.len; i++)
 	{
-		printf("nodo :	%d\n", data.stack_A->n);
-		data.stack_A = data.stack_A->next;
-	}
+		printf("nodo :	%d\n", data.stack_B->n);
+		data.stack_B = data.stack_B->next;
+	} */ 
 }
 
