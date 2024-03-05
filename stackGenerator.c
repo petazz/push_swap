@@ -14,6 +14,11 @@ t_node *listGenerator(int *arr, int len)
 		ft_push(&head, arr[i]);
 		i--;
 	}
+	/* for(int i = 0; i < len; i++)
+	{
+		printf("nodo :	%d\n", head->n);
+		head = head->next;
+	} */
 	return (head);
 } 
 

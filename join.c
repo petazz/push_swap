@@ -30,7 +30,7 @@ char	*ft_strjoin_ps(char **argv, int argc)
 
 	i = 0;
 	s = 0;
-	str = malloc((ft_strlen_ps(argv) + argc));
+	str = malloc((ft_strlen_ps(argv) + argc)); //argc = espacios
 	if (!str)
 		return (NULL);
 	while(argv[i])

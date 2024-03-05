@@ -80,11 +80,11 @@ void	init_stack(char **argv, t_data *data, int argc)
 		ft_error();
 	data->stack_A = listGenerator(data->arr, data->len);
 	//////////////////IMPRIMIR//////////////////////
-	/* for(int i = 0; i < data->len; i++)
+	/*  for(int i = 0; i < data->len; i++)
 	{
 		printf("nodo :	%d\n", data->stack_A->n);
 		data->stack_A = data->stack_A->next;
-	} */
+	}  */
 	/* int arr2[] = {4, 5, 6};
 	t_node *segundoNodo = listGenerator(arr2, 3);
 	for(int i = 0; i < data->len; i++)

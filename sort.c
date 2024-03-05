@@ -3,10 +3,11 @@
 int	ft_isSort(t_node *head, t_data *data)
 {
 	t_node *aux;
+	t_node *last;
 
 	aux = head;
-	data->last = head->prev;
-	while(head != data->last)
+	last = head->prev;
+	while(head != last)
 	{
 		if(head->n > head->next->n)
 			return (0);
@@ -17,15 +18,14 @@ int	ft_isSort(t_node *head, t_data *data)
 
 void	ft_positions(t_node **head)
 {
-	t_node *ultimo;
 	int i;
 
 	i = 0;
-	ultimo = (*head)->prev;
-	while(*head != ultimo)
+	while(i < ft_lst_len(*head))
 	{
-		(*head)->position = i++;
+		(*head)->position = i;
 		*head = (*head)->next;
+		i++;
 	}
 }
 
@@ -67,9 +67,9 @@ long	ft_average(t_node *head, int size_A)
 		aux = aux->next;
 	}
 	average += aux->n;
-	printf("total sum:	%d\n", average);
+	printf("total sum:	%ld\n", average);
 	average = average / (long)ft_lst_len(head);
-	printf("average:	%d\n", average);
+	printf("average:	%ld\n", average);
 	return (average);
 }
 
@@ -77,12 +77,12 @@ void	ft_above_average(t_data *data, long average)
 {
 	if(data->stack_A->n <= average)
 	{
-		printf("px a %ld\n", data->stack_A->n);
+		printf("px a %d\n", data->stack_A->n);
 		px(&data->stack_B, &data->stack_A);
 	}
 	else
 	{
-		printf("rx a %ld\n", data->stack_A->n);
+		printf("rx a %d\n", data->stack_A->n);
 		rx(&data->stack_A);
 	}
 }
@@ -99,7 +99,6 @@ int	ft_lst_len(t_node *head)
 		aux = aux->next;
 		i++;
 	}
-	printf("len:	%d\n", i);
 	return (i);
 }
 
@@ -131,13 +130,13 @@ void	ft_sort(t_data *data)
 			 */
 			}
 			ft_sort_3(&data->stack_A, data);
-			ft_besties(&data->stack_A, &data->stack_B);
-			ft_besties(&data->stack_A, &data->stack_B);
+			for(int i = 0 ; i < 14 ; i++)
+				ft_calculate_cost(&data->stack_A, &data->stack_B, data);
 				
-			/* for(int i = 0; i < 10; i++)
+			/* for(int i = 0; i < 10;i++)
 			{
-				printf("nodo B:	%d\n", data->stack_B->n);
-				data->stack_B = data->stack_B->next;
+				printf("nodo B:	%d\n" data->stack_B->n);
+				data->stack_B = data-stack_B->next;
 			}
 			for(int i = 0; i < 10; i++)
 			{
@@ -147,40 +146,3 @@ void	ft_sort(t_data *data)
 		}
 	}
 } 
-
-//********************************************************************************//
-void	ft_besties(t_node **head_A, t_node **head_B)
-{
-	int	target;
-	int size;
-	int	i;
-	int	bestie;
-	int num;
-
-	num = 0;
-	i = 1;
-	target = __INT_MAX__;
-	size = ft_lst_len(*head_A);
-	while(i <= size)
-	{
-		
-		num = (*head_A)->n - (*head_B)->n;
-		if ((num < target) && ((*head_A)->n > (*head_B)->n))
-		{
-			target = num;
-			bestie = (*head_A)->n;
-		}
-		*head_A = (*head_A)->next;
-		i++;
-	}
-
-	printf("bestie: %i de %i\n", bestie, (*head_B)->n);
-	//return ()
-}
-
-/* 
-void	ft_top()
-{
-	if(head->position <= (ft_lst_len(head) / 2))
-
-} */

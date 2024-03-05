@@ -9,8 +9,12 @@
 
 typedef struct s_node
 {
-	int position;
 	int n;
+	int position;
+	int cost_bestie;
+	int cost_node;
+	int	total_cost;
+	int	bestie_position;
 	struct s_node *next;
 	struct s_node *prev;
 } t_node;
@@ -19,6 +23,8 @@ typedef struct s_data
 {
 	int len;
 	int *arr;
+	t_node *cheapest;
+	t_node *bestie;
 	t_node *stack_A;
 	t_node *stack_B;
 	t_node *last;
@@ -43,8 +49,15 @@ int		ft_isSort(t_node *head, t_data *data);
 void	ft_sort(t_data *data);
 int		ft_lst_len(t_node *head);
 void	ft_above_average(t_data *data, long average);
-long		ft_average(t_node *head, int size_A);
-void	ft_besties(t_node **head_A, t_node **head_B);
+long	ft_average(t_node *head, int size_A);
+int		ft_besties(t_node *head_A, t_node *head_B, t_data *data);
+int		ft_calculate_top(t_node **head);
+void	ft_positions(t_node **head);
+void	ft_calculate_cost(t_node **head_A, t_node **head_B, t_data *data);
+void	ft_total_cost(t_node *head_B);
+void	ft_cheapest_node(t_node *head_B, t_data *data);
+void	ft_move_node_top(t_node **cheapest);
+void	ft_set_bestie(int position, t_node *head_A, t_data *data);
 
 
 #endif
