@@ -1,11 +1,5 @@
 #include "prueba.h"
 
-void	ft_error()
-{
-	write(2, "ERROR", 5);
-	exit(EXIT_FAILURE);
-}
-
 int		 ft_valid(char *str)
 {
 	unsigned long num;

@@ -31,75 +31,22 @@ void	ft_positions(t_node **head)
 
 void	ft_sort_3(t_node **head, t_data *data)
 {
-	if(((*head)->n > (*head)->next->n) && ((*head)->next->n < (*head)->next->next->n))
-		sx(&data->stack_A);
-	if(((*head)->n > (*head)->next->n) && ((*head)->next->n > (*head)->next->next->n))
+	if(((*head)->n > (*head)->next->n) && ((*head)->next->n < (*head)->next->next->n) && (*head)->n > (*head)->next->next->n)
+		ra(&data->stack_A);
+	else if(((*head)->n > (*head)->next->n) && ((*head)->next->n > (*head)->next->next->n))
 	{
-		sx(&data->stack_A);
-		rrx(&data->stack_A);
+		sa(&data->stack_A);
+		rra(&data->stack_A);
 	}
-	if(((*head)->n > (*head)->next->n) && ((*head)->next->n < (*head)->next->next->n))
-		rx(&data->stack_A);
-	if(((*head)->n < (*head)->next->n) && ((*head)->next->n > (*head)->next->next->n))
+	else if(((*head)->n > (*head)->next->n) && ((*head)->next->n < (*head)->next->next->n) && (*head)->n < (*head)->next->next->n)
+		sa(&data->stack_A);
+	else if(((*head)->n < (*head)->next->n) && ((*head)->next->n > (*head)->next->next->n) && (*head)->n < (*head)->next->next->n)
 	{
-		sx(&data->stack_A);
-		rx(&data->stack_A);
+		sa(&data->stack_A);
+		ra(&data->stack_A);
 	}
-	if(((*head)->n < (*head)->next->n) && ((*head)->next->n > (*head)->next->next->n))
-		rrx(&data->stack_A);
-	for(int i = 0; i < 3; i++)
-	{
-		printf("ORDENADO:	%d\n", data->stack_A->n);
-		data->stack_A = data->stack_A->next;
-	}
-}
-
-long	ft_average(t_node *head, int size_A)
-{
-	long average;
-	t_node *aux;
-
-	aux = head;
-	average = 0;
-	while(aux->next != head)
-	{
-		average += aux->n;
-		aux = aux->next;
-	}
-	average += aux->n;
-	printf("total sum:	%ld\n", average);
-	average = average / (long)ft_lst_len(head);
-	printf("average:	%ld\n", average);
-	return (average);
-}
-
-void	ft_above_average(t_data *data, long average)
-{
-	if(data->stack_A->n <= average)
-	{
-		printf("px a %d\n", data->stack_A->n);
-		px(&data->stack_B, &data->stack_A);
-	}
-	else
-	{
-		printf("rx a %d\n", data->stack_A->n);
-		rx(&data->stack_A);
-	}
-}
-
-int	ft_lst_len(t_node *head)
-{
-	int i;
-	t_node *aux;
-
-	aux = head;
-	i = 1;
-	while(aux->next != head)
-	{
-		aux = aux->next;
-		i++;
-	}
-	return (i);
+	else if(((*head)->n < (*head)->next->n) && ((*head)->next->n > (*head)->next->next->n) && (*head)->n > (*head)->next->next->n)
+		rra(&data->stack_A);
 }
 
 void	ft_sort(t_data *data)
@@ -109,40 +56,24 @@ void	ft_sort(t_data *data)
 	if(!ft_isSort(data->stack_A, data))
 	{
 		int size_A;
+		int i;
 
+		i = 0;
 		size_A = ft_lst_len(data->stack_A);
 		if(data->len == 2)
-			sx(&data->stack_A);
+			sa(&data->stack_A);
 		if(data->len == 3)
 			ft_sort_3(&data->stack_A, data);
 		if(data->len > 3)
 		{
-			//ft_average(data->stack_A, size_A);
 			while(ft_lst_len(data->stack_A) > 3)
-			{
 				ft_above_average(data, ft_average(data->stack_A, size_A));
-				/* printf("entra en el while\n");
-				printf("primer nodo:	%d\n", data->stack_B->n);
-				printf("ultimo nodo:	%d\n", data->stack_B->prev->n); */
-				
-				/* printf("primer nodo2:	%d\n", data->stack_B->n);
-				printf("ultimo nodo2:	%d\n", data->stack_B->prev->n);
-			 */
-			}
 			ft_sort_3(&data->stack_A, data);
-			for(int i = 0 ; i < 14 ; i++)
+			while(i < size_A - 3)
+			{
 				ft_calculate_cost(&data->stack_A, &data->stack_B, data);
-				
-			/* for(int i = 0; i < 10;i++)
-			{
-				printf("nodo B:	%d\n" data->stack_B->n);
-				data->stack_B = data-stack_B->next;
+				i++;
 			}
-			for(int i = 0; i < 10; i++)
-			{
-				printf("nodo A:	%d\n", data->stack_A->n);
-				data->stack_A = data->stack_A->next;
-			} */
 		}
 	}
-} 
+}
