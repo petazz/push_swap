@@ -1,4 +1,4 @@
-#include "prueba.h"
+#include "push_swap.h"
 
 int		 ft_valid(char *str)
 {
@@ -59,9 +59,10 @@ void	init_stack(char **argv, t_data *data, int argc)
 	i = 0;
 	data->arr = malloc(ft_strlen_ps(argv) * sizeof(int));
 	if(!data->arr)
-		write(2, "ERROR", 5); // funcion limpieza nodos
+		ft_error();
 	str = ft_strjoin_ps(argv, argc);
 	argv = ft_split(str, ' ');
+	free(str);
 	while(argv[i])
 	{
 		if(!ft_valid(argv[i]))
@@ -69,21 +70,10 @@ void	init_stack(char **argv, t_data *data, int argc)
 		data->arr[i] = ft_atoi(argv[i]);
 		i++;
 	}
+	ft_free_split(argv);
 	data->len = i;
 	if (!ft_repeat(data->arr, data->len))
 		ft_error();
 	data->stack_A = listGenerator(data->arr, data->len);
-	//////////////////IMPRIMIR//////////////////////
-	/*  for(int i = 0; i < data->len; i++)
-	{
-		printf("nodo :	%d\n", data->stack_A->n);
-		data->stack_A = data->stack_A->next;
-	}  */
-	/* int arr2[] = {4, 5, 6};
-	t_node *segundoNodo = listGenerator(arr2, 3);
-	for(int i = 0; i < data->len; i++)
-	{
-		printf("nodo 2:	%d\n", segundoNodo->n);
-		segundoNodo = segundoNodo->next;
-	} */  
+	free(data->arr);  
 }

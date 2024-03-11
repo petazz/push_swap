@@ -1,4 +1,4 @@
-#include "prueba.h"
+#include "push_swap.h"
 
 t_node *listGenerator(int *arr, int len)
 {
@@ -14,11 +14,6 @@ t_node *listGenerator(int *arr, int len)
 		ft_push(&head, arr[i]);
 		i--;
 	}
-	/* for(int i = 0; i < len; i++)
-	{
-		printf("nodo :	%d\n", head->n);
-		head = head->next;
-	} */
 	return (head);
 } 
 
@@ -75,4 +70,16 @@ int	ft_pop(t_node **head)
 		free(aux);
 	}
 	return (n);
+}
+
+void	ft_free_stack(t_node **stack)
+{
+	int size;
+
+	size = ft_lst_len(*stack);
+	while(size)
+	{
+		ft_pop(stack);
+		size--;
+	}
 }

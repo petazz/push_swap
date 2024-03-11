@@ -1,4 +1,4 @@
-#include "prueba.h"
+#include "push_swap.h"
 
 int	ft_isSort(t_node *head, t_data *data)
 {

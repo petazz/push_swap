@@ -1,12 +1,21 @@
-#ifndef PRUEBA_H
-# define PRUEBA_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
 # include <limits.h>
 # include "libft.h"
+# include <unistd.h>
+# include <fcntl.h>
 
+//buffer gnl
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+
+//estructura node
 typedef struct s_node
 {
 	int n;
@@ -19,6 +28,7 @@ typedef struct s_node
 	struct s_node *prev;
 } t_node;
 
+//estructura data
 typedef struct s_data
 {
 	int len;
@@ -59,11 +69,14 @@ void	rrb(t_node **head);
 void	rb(t_node **head);
 void	rr(t_node **head_A, t_node **head_B);
 
+//sort
 int		ft_isSort(t_node *head, t_data *data);
 void	ft_sort(t_data *data);
 int		ft_lst_len(t_node *head);
 void	ft_above_average(t_data *data, long average);
 long	ft_average(t_node *head, int size_A);
+
+//cost
 int		ft_besties(t_node *head_A, t_node *head_B, t_data *data);
 int		ft_calculate_top(t_node **head);
 void	ft_positions(t_node **head);
@@ -74,8 +87,21 @@ void	ft_move_node_top(t_node **cheapest, t_data *data);
 void	ft_move_bestie_top(t_node **ft_besties, t_data *data);
 void	ft_set_bestie(int position, t_node *head_A, t_data *data);
 
+//utils
 void	ft_min(t_node *head_A, t_data *data);
-void	ft_set_head(t_node **head_A, t_data *data);
+int	ft_set_head(t_node **head_A, t_data *data);
+char	**ft_free_split(char **matrix);
+void	ft_free_stack(t_node **stack);
+
+//checker
+char	*ft_free_gnl(char *str);
+char	*ft_strdup_gnl(char *s1);
+size_t	ft_strlen_gnl(char *c);
+char	*ft_strchr_gnl(char *s, int c);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+char	*ft_file_read_(char *estatic, int fd);
+char	*get_next_line(int fd);
+char	*ft_substr_gnl(char *s, unsigned int start, size_t len);
 
 
 #endif

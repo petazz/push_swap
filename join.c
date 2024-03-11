@@ -1,4 +1,4 @@
-#include "prueba.h"
+#include "push_swap.h"
 
 int	ft_strlen_ps(char **argv)
 {

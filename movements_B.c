@@ -1,4 +1,4 @@
-#include "prueba.h"
+#include "push_swap.h"
 
 void	sb(t_node **head)
 {
