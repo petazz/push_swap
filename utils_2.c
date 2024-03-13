@@ -14,6 +14,19 @@ char	**ft_free_split(char **matrix)
 	return (NULL);
 }
 
+void	ft_positions(t_node **head)
+{
+	int i;
+
+	i = 0;
+	while(i < ft_lst_len(*head))
+	{
+		(*head)->position = i;
+		*head = (*head)->next;
+		i++;
+	}
+}
+
 void	ft_min(t_node *head_A, t_data *data)
 {
 	int i;

@@ -38,6 +38,8 @@ int	ft_lst_len(t_node *head)
 
 	aux = head;
 	i = 1;
+	if(!head)
+		return (1);
 	while(aux->next != head)
 	{
 		aux = aux->next;

@@ -16,18 +16,6 @@ int	ft_isSort(t_node *head, t_data *data)
 	return (1);
 }
 
-void	ft_positions(t_node **head)
-{
-	int i;
-
-	i = 0;
-	while(i < ft_lst_len(*head))
-	{
-		(*head)->position = i;
-		*head = (*head)->next;
-		i++;
-	}
-}
 
 void	ft_sort_3(t_node **head, t_data *data)
 {

@@ -57,6 +57,7 @@ void	init_stack(char **argv, t_data *data, int argc)
 	int 	i;
 
 	i = 0;
+	data->stack_B = NULL;
 	data->arr = malloc(ft_strlen_ps(argv) * sizeof(int));
 	if(!data->arr)
 		ft_error();
