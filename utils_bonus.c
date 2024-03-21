@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgonzal2 <pgonzal2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 15:11:24 by pgonzal2          #+#    #+#             */
-/*   Updated: 2024/03/21 19:31:32 by pgonzal2         ###   ########.fr       */
+/*   Created: 2024/03/21 13:16:34 by pgonzal2          #+#    #+#             */
+/*   Updated: 2024/03/21 16:40:40 by pgonzal2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	ft_error(void)
 {
@@ -51,7 +51,7 @@ int	ft_lst_len(t_node *head)
 	aux = head;
 	i = 1;
 	if (!head)
-		return (-1);
+		return (1);
 	while (aux->next != head)
 	{
 		aux = aux->next;

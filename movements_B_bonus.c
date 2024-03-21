@@ -1,58 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements_A.c                                      :+:      :+:    :+:   */
+/*   movements_B_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgonzal2 <pgonzal2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 15:11:03 by pgonzal2          #+#    #+#             */
-/*   Updated: 2024/03/21 19:41:30 by pgonzal2         ###   ########.fr       */
+/*   Created: 2024/03/21 13:15:25 by pgonzal2          #+#    #+#             */
+/*   Updated: 2024/03/21 19:41:44 by pgonzal2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-void	sa(t_node **head)
+void	sb(t_node **head)
 {
 	int	aux;
 
-	if (!head)
+	if (!*head)
 		return ;
 	aux = (*head)->n;
 	(*head)->n = (*head)->next->n;
 	(*head)->next->n = aux;
-	printf("sa\n");
 }
 
-void	pa(t_node **dst, t_node **src)
+void	pb(t_node **dst, t_node **src)
 {
-	if (!src)
+	if (!*src)
 		return ;
 	ft_push(dst, ft_pop(src));
-	printf("pa\n");
+
 }
 
-void	ra(t_node **head)
+void	rb(t_node **head)
 {
-	if (!head)
+	if (!*head)
 		return ;
-	printf("ra\n");
 	*head = (*head)->next;
 }
 
-void	rra(t_node **head)
+void	rrb(t_node **head)
 {
-	if (!head)
+	if (!*head)
 		return ;
-	printf("rra\n");
 	*head = (*head)->prev;
 }
 
-void	rrr(t_node **head_a, t_node **head_b)
+void	rr(t_node **head_a, t_node **head_b)
 {
-	if (!head_a || !head_b)
-		return ;
-	printf("rrr\n");
-	*head_a = (*head_a)->prev;
-	*head_b = (*head_b)->prev;
+	ra(head_a);
+	rb(head_b);
 }

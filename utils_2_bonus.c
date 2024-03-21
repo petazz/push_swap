@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_2.c                                          :+:      :+:    :+:   */
+/*   utils_2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgonzal2 <pgonzal2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 15:11:21 by pgonzal2          #+#    #+#             */
-/*   Updated: 2024/03/21 19:41:21 by pgonzal2         ###   ########.fr       */
+/*   Created: 2024/03/21 13:16:15 by pgonzal2          #+#    #+#             */
+/*   Updated: 2024/03/21 19:41:30 by pgonzal2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 char	**ft_free_split(char **matrix)
 {
@@ -79,4 +79,10 @@ int	ft_set_head(t_node **head_a, t_data *data)
 		}
 	}
 	return (data->position_min);
+}
+
+void	ss(t_node **head_a, t_node **head_b)
+{
+	sa(head_a);
+	sb(head_b);
 }

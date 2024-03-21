@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stackGenerator.c                                   :+:      :+:    :+:   */
+/*   stackGenerator_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgonzal2 <pgonzal2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 15:11:16 by pgonzal2          #+#    #+#             */
-/*   Updated: 2024/03/21 16:30:43 by pgonzal2         ###   ########.fr       */
+/*   Created: 2024/03/21 13:15:58 by pgonzal2          #+#    #+#             */
+/*   Updated: 2024/03/21 16:30:52 by pgonzal2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 t_node	*list_generator(int *arr, int len)
 {

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgonzal2 <pgonzal2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 15:41:58 by pgonzal2          #+#    #+#             */
+/*   Created: 2024/03/21 15:42:01 by pgonzal2          #+#    #+#             */
 /*   Updated: 2024/03/21 19:41:30 by pgonzal2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include "libft.h"
 # include <fcntl.h>
@@ -103,6 +103,7 @@ void				ft_min(t_node *head_a, t_data *data);
 int					ft_set_head(t_node **head_a, t_data *data);
 char				**ft_free_split(char **matrix);
 void				ft_free_stack(t_node **stack);
+void				ss(t_node **head_a, t_node **head_b);
 
 // checker
 char				*ft_free_gnl(char *str);
@@ -113,5 +114,7 @@ char				*ft_strjoin_gnl(char *s1, char *s2);
 char				*ft_file_read_(char *estatic, int fd);
 char				*get_next_line(int fd);
 char				*ft_substr_gnl(char *s, unsigned int start, size_t len);
+void				ft_while(char *str, t_data *data);
+void				ft_move(t_data *data);
 
 #endif
